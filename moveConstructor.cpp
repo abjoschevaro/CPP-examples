@@ -3,10 +3,9 @@
 using namespace std;
 
 class MyString{
-	//private:
-	public:
+	private:
 		char* buffer;
-	//public:
+	public:
 		MyString(const char* initString){
 			cout << "Default constructor: creating new MyString" << endl;
 			buffer = nullptr;
@@ -55,40 +54,26 @@ class MyString{
 };
 
 MyString Copy(MyString& source){
-	//MyString copyForReturn(source.GetString());
-	MyString copyForReturn(source);
+	MyString copyForReturn(source.GetString());
 	copyForReturn.EditString();
 	return copyForReturn;
 }
 
-void UseMyString(MyString buffer){
-	cout << "String buffer in MyString is: " << buffer.GetLen();
-	cout << " characters long" << endl;
-
-	cout << "buffer contains: " << buffer.GetString() << endl;
-};
-
 int main(){	
 	MyString saludo("Hola a todos, amigos");
 	cout << saludo.GetString() << endl;
-	//cout << "-----------------------------" << endl;
-	//Copy(saludo);
-	//const MyString& meet = Copy(saludo);
-	//cout << "-----------------------------" << endl;
-	//MyString saludoAgain(meet);
-	//cout << "++++++++++++++++++++++++++++++++++" << endl;
-	//Copy(saludo);
 	cout << ",,,,,,,,,,,,,,,,,,,,,,,,,,,," << endl;
-	MyString saludoAgain(Copy(saludo));
-	cout << saludoAgain.GetString() << endl;
-	cout << "+++++++++++++++++++++++++++++" << endl;
-	MyString saludo1 = Copy(saludo);
+	MyString saludo1(Copy(saludo));
 	cout << saludo1.GetString() << endl;
+	cout << "+++++++++++++++++++++++++++++" << endl;
+	MyString saludo2 = Copy(saludo);
+	cout << saludo2.GetString() << endl;
 	cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" << endl;
-	MyString saludoTwice = saludo;
-	cout << saludoTwice.GetString() << endl;
+	MyString saludo3 = saludo;
+	cout << saludo3.GetString() << endl;
 	cout << "-----------------------------" << endl;
-	cout << "saludo buffer: ";
+	cout << "after call 'EditString' member function saludo buffer: ";
 	cout << saludo.GetString() << endl;
+	cout << "-----------------------------" << endl;
 	return 0;
 }
